@@ -7,9 +7,8 @@ const todo = (state, action) => {
         completed: false,
       }
     case 'TOGGLE_TODO':
-      if (state.id !== action.id) {
+      if (state.id !== action.id)
         return state
-      }
       return {
         ...state,
         completed: !state.completed,
@@ -36,3 +35,16 @@ const todos = (state = [], action) => {
 }
 
 export default todos
+
+export const getVisibleTodos = (state, filter) => {
+  switch (filter) {
+    case 'all':
+      return state
+    case 'active':
+      return state.filter(t => !t.completed)
+    case 'completed':
+      return state.filter(t => t.completed)
+    default:
+      throw new Error(`Unknown filter: ${filter}.`)
+  }
+}
