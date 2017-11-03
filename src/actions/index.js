@@ -1,7 +1,9 @@
+import { v4 } from 'uuid'
+
 let nextTodoId = 0
 export const addTodo = (text) => ({
   type: 'ADD_TODO',
-  id: (nextTodoId++).toString(),
+  id: v4(),
   text,
 })
 

@@ -1,12 +1,11 @@
 import React, { PropTypes } from 'react'
 import Todo from './Todo'
-import v4 from 'uuid/v4'
 
 const TodoList = ({ todos, onTodoClick }) => (
   <ul>
     {todos.map(todo =>
       <Todo
-        key={v4()}
+        key={todo.id}
         {...todo}
         onClick={() => onTodoClick(todo.id)}
       />
